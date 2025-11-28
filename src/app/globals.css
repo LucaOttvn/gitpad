@@ -52,9 +52,10 @@ body {
 }
 
 .file {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--mainBorderRadius);
+  background-color: var(--green);
+  padding: 1rem 0;
 }

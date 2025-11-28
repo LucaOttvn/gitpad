@@ -30,7 +30,8 @@ export default async function FileExplorer({children}: {children: React.ReactNod
     <div className="fileExplorer">
       {tree.map((item) => {
         if (item.type === TypesEnum.tree) return <Folder key={item.path} folder={item} />;
-        return <div className="file" key={item.path}>{item.name}</div>;
+        return <div className="file" key={item.path}>
+            {item.name}</div>;
       })}
     </div>
   );

@@ -50,7 +50,7 @@ export default async function FolderPage(props: FolderPageProps) {
     <div className="fileExplorer">
       {foundFolder.children.map((item) => {
         if (item.type === TypesEnum.tree) return <Folder key={item.path} folder={item} />;
-        return <div key={item.path}>{item.name}</div>;
+        return <div className="file" key={item.path}>{item.name}</div>;
       })}
     </div>
   );
