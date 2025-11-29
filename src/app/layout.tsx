@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ViewTransition enter="slide-in" exit='slide-out'>{children}</ViewTransition>
+        <ViewTransition enter="slide-in" exit="slide-out">
+          {children}
+        </ViewTransition>
       </body>
     </html>
   );

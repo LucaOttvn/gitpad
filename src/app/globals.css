@@ -44,6 +44,16 @@ body {
   height: 100svh;
 }
 
+.mainButton {
+  min-width: 2rem;
+  min-height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey);
+  border-radius: var(--bigBorderRadius);
+}
+
 .fileExplorer {
   width: 100%;
   display: flex;

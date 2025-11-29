@@ -47,3 +47,13 @@
     }
 
 }
+
+#toolBar {
+    position: absolute;
+    width: calc(100% - 2rem);
+    margin: 0 1rem;
+    bottom: 1rem;
+    background-color: var(--lightBlack);
+    border-radius: var(--bigBorderRadius);
+    padding: 0.5rem;
+}
