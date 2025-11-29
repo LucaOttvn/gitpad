@@ -47,9 +47,12 @@ body {
 
 .clickableItem {
   transition: 0.2s;
-  &:active {
+  &:not(:disabled):active {
     scale: 1.05;
     filter: invert(1);
+  }
+  &:disabled {
+    opacity: 50%;
   }
 }
 
@@ -61,7 +64,6 @@ body {
   align-items: center;
   background-color: var(--grey);
   border-radius: var(--borderRadiusL);
-  
 }
 
 .fileExplorer {

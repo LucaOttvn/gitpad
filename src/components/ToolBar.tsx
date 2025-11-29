@@ -1,29 +1,22 @@
-"use client";
+"use client";;
 import Image from "next/image";
 import "./shared-styles.scss";
-import {useRouter} from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-interface ToolBarProps {}
-
-export default function ToolBar(props: ToolBarProps) {
+export default function ToolBar() {
   const router = useRouter();
+  const pathName = usePathname()
+
   return (
     <div id="toolBar">
       <button
         className="mainButton clickableItem"
+        disabled={pathName === '/'}
         onClick={() => {
           router.back();
         }}
       >
         <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
-      </button>
-      <button
-        className="mainButton clickableItem"
-        onClick={() => {
-          router.forward();
-        }}
-      >
-        <Image src="/icons/arrow-right.svg" alt="back" width={20} height={20} />
       </button>
     </div>
   );
