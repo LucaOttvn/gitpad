@@ -1,0 +1,15 @@
+.treeItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: var(--mainBorderRadius);
+    padding: 1rem 0.5rem;
+    gap: 0.5rem;
+    min-width: 0;
+    
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+    }
+}

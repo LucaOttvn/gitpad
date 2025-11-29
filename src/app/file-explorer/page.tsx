@@ -1,8 +1,9 @@
-import Folder from "@/src/components/folder/Folder";
+import FileComponent from "@/src/components/FileComponent";
+import Folder from "@/src/components/FolderComponent";
 import getRepoContents from "@/src/server-actions/get-repo";
-import {TypesEnum} from "@/src/utils/enums";
-import {TreeItem} from "@/src/utils/models";
-import {buildTree} from "path-mapper-json";
+import { TypesEnum } from "@/src/utils/enums";
+import { TreeItem } from "@/src/utils/models";
+import { buildTree } from "path-mapper-json";
 
 export default async function FileExplorer({children}: {children: React.ReactNode}) {
   const response = await getRepoContents();
@@ -27,12 +28,11 @@ export default async function FileExplorer({children}: {children: React.ReactNod
   console.log(tree);
 
   return (
-    <div className="fileExplorer">
-      {tree.map((item) => {
-        if (item.type === TypesEnum.tree) return <Folder key={item.path} folder={item} />;
-        return <div className="file" key={item.path}>
-            {item.name}</div>;
-      })}
-    </div>
+      <div className="fileExplorer">
+        {tree.map((item) => {
+          if (item.type === TypesEnum.tree) return <Folder key={item.path} folder={item} />;
+          return <FileComponent file={item} />;
+        })}
+      </div>
   );
 }

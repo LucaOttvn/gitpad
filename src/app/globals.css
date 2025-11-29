@@ -9,6 +9,7 @@
   --white: #ffffff;
   --black: #101010;
   --lightBlack: #202020;
+  --grey: #404040;
   --green: #00a674;
   --darkGreen: #003e2c;
 }
@@ -46,16 +47,7 @@ body {
 .fileExplorer {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1rem;
   padding: 1rem;
-}
-
-.file {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: var(--mainBorderRadius);
-  background-color: var(--green);
-  padding: 1rem 0;
 }

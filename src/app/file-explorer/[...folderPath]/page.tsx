@@ -1,8 +1,9 @@
-import Folder from "@/src/components/folder/Folder";
+import FileComponent from "@/src/components/FileComponent";
+import FolderComponent from "@/src/components/FolderComponent";
 import getRepoContents from "@/src/server-actions/get-repo";
-import {TypesEnum} from "@/src/utils/enums";
-import {TreeItem} from "@/src/utils/models";
-import {buildTree} from "path-mapper-json";
+import { TypesEnum } from "@/src/utils/enums";
+import { TreeItem } from "@/src/utils/models";
+import { buildTree } from "path-mapper-json";
 
 interface FolderPageProps {
   params: Promise<{folderPath: string[]}>;
@@ -48,9 +49,9 @@ export default async function FolderPage(props: FolderPageProps) {
 
   return (
     <div className="fileExplorer">
-      {foundFolder.children.map((item) => {
-        if (item.type === TypesEnum.tree) return <Folder key={item.path} folder={item} />;
-        return <div className="file" key={item.path}>{item.name}</div>;
+      {foundFolder.children.map((item, index) => {
+        if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} index={index} />;
+        return <FileComponent key={item.path} file={item} index={index}/>;
       })}
     </div>
   );
