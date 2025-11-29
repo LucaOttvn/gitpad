@@ -3,8 +3,9 @@
 :root {
   --mainBoxShadow: var(--Black) 2px 2px 5px;
   --bigBoxShadow: var(--Black) 0px 10px 30px;
-  --mainBorderRadius: 0.5rem;
-  --bigBorderRadius: 1.5rem;
+  --borderRadiusM: 0.5rem;
+  --borderRadiusL: 1.5rem;
+  --borderRadiusXL: 2rem;
 
   --white: #ffffff;
   --black: #101010;
@@ -45,13 +46,13 @@ body {
 }
 
 .mainButton {
-  min-width: 2rem;
-  min-height: 2rem;
+  min-width: 3rem;
+  min-height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--grey);
-  border-radius: var(--bigBorderRadius);
+  border-radius: var(--borderRadiusL);
 }
 
 .fileExplorer {

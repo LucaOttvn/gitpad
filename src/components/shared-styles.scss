@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-radius: var(--mainBorderRadius);
+    border-radius: var(--borderRadiusM);
     padding: 1rem 0.5rem;
     gap: 0.5rem;
     min-width: 0;
@@ -17,7 +17,7 @@
 .breadCrumbs {
     width: 100%;
     background-color: var(--lightBlack);
-    border-radius: var(--bigBorderRadius);
+    border-radius: var(--borderRadiusL);
     padding: 0.5rem;
     overflow: hidden;
     position: relative;
@@ -41,7 +41,7 @@
             align-items: center;
             flex-shrink: 0;
             background-color: var(--grey);
-            border-radius: var(--bigBorderRadius);
+            border-radius: var(--borderRadiusL);
             padding: 0.2rem 0.5rem;
         }
     }
@@ -58,6 +58,6 @@
     bottom: 1rem;
     left: 1rem;
     background-color: var(--lightBlack);
-    border-radius: var(--bigBorderRadius);
+    border-radius: var(--borderRadiusXL);
     padding: 0.5rem;
 }
