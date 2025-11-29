@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {ViewTransition} from "react";
+import ToolBar from "../components/ToolBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ViewTransition enter="slide-in" exit="slide-out">
           {children}
+          <ToolBar />
         </ViewTransition>
       </body>
     </html>
