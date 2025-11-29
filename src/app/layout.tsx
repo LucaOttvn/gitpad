@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "GitPad",
+  icons: {
+    icon: "/icons/GitPad.png",
+    apple: "/icons/GitPad.png",
+  },
 };
 
 export default function RootLayout({
