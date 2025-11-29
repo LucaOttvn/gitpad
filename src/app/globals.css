@@ -4,7 +4,7 @@
   --mainBoxShadow: var(--Black) 2px 2px 5px;
   --bigBoxShadow: var(--Black) 0px 10px 30px;
   --mainBorderRadius: 0.5rem;
-  --bigBorderRadius: 30px;
+  --bigBorderRadius: 1.5rem;
 
   --white: #ffffff;
   --black: #101010;
@@ -46,8 +46,16 @@ body {
 
 .fileExplorer {
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 1rem;
+  gap: 1rem;
+  .fileExplorerGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
 }

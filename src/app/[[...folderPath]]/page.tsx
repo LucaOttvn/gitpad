@@ -1,3 +1,4 @@
+import BreadCrumbs from "@/src/components/BreadCrumbs";
 import FileComponent from "@/src/components/FileComponent";
 import FolderComponent from "@/src/components/FolderComponent";
 import getRepoContents from "@/src/server-actions/get-repo";
@@ -41,11 +42,14 @@ export default async function FolderPage(props: FolderPageProps) {
 
   return (
     <div className="fileExplorer">
-      {/* For the rest of the tree, show the children */}
-      {arr.map((item, index) => {
-        if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} index={index}/>;
-        return <FileComponent key={item.path} file={item} index={index}/>;
-      })}
+        <BreadCrumbs />
+      <div className="fileExplorerGrid">
+        {/* For the rest of the tree, show the children */}
+        {arr.map((item, index) => {
+          if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} index={index} />;
+          return <FileComponent key={item.path} file={item} index={index} />;
+        })}
+      </div>
     </div>
   );
 }
