@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GitPad",
   icons: {
-    icon: "/icons/GitPad-dark.png",
-    apple: "/icons/GitPad-dark.png",
+    icon: "/icons/GitPad.png",
+    apple: "/icons/GitPad.png",
   },
 };
 
