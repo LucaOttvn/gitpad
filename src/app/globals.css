@@ -56,6 +56,11 @@ body {
   }
 }
 
+.disabledLink {
+    pointer-events: none;
+    opacity: 50%;
+}
+
 .mainButton {
   min-width: 3rem;
   min-height: 3rem;
