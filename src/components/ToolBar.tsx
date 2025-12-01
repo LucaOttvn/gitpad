@@ -13,9 +13,10 @@ export default function ToolBar() {
 
   const sections = pathName.split("/").filter((x) => x);
 
-  const backButtonHref = `/${sections.slice(0, sections.length - 1).join("/")}`;
+  // Slice from 1 because the base url is /file-explorer
+  const backButtonHref = `/${sections.slice(1, sections.length - 1).join("/")}`;
 
-  let isBackDisabled = sections.length === 0 ? " disabledLink" : " clickableItem";
+  let isBackDisabled = sections.length === 1 ? " disabledLink" : " clickableItem";
 
   return (
     <div id="toolBar">
@@ -39,7 +40,7 @@ export default function ToolBar() {
       ) : (
         <button
           className={"mainButton" + isBackDisabled}
-          disabled={pathName === "/"}
+          disabled={sections.length === 0}
           onClick={() => {
             router.back();
           }}
