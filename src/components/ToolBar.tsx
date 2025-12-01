@@ -48,6 +48,12 @@ export default function ToolBar() {
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </button>
       )}
+
+      {pathName.includes("file-editor") && (
+        <Link href={`${pathName}/preview`} className={"mainButton" + isBackDisabled}>
+          <span className="mx-5">Preview</span>
+        </Link>
+      )}
     </div>
   );
 }
