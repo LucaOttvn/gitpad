@@ -1,6 +1,6 @@
 'use server'
 
-export default async function getFile(filePath: string) {
+export default async function getFile(filePath: string): Promise<string> {
     const url = `https://api.github.com/repos/LucaOttvn/DOCS/contents/${filePath}`;
 
     const response = await fetch(url, {

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography"; 
 
 :root {
   --mainBoxShadow: var(--Black) 2px 2px 5px;

@@ -1,18 +1,24 @@
 import getFile from "@/src/server-actions/get-file";
+import Markdown from "react-markdown";
 
 interface FileEditorProps {
-    params: Promise<{filePath: string[]}>
+  params: Promise<{filePath: string[]}>;
 }
 
 export default async function FileEditor(props: FileEditorProps) {
-  const {filePath} = await props.params
+  const {filePath} = await props.params;
 
-  console.log(filePath)
-  const fileContent = await getFile(filePath.join('/'));
-  return <div className="w-full h-full flex justify-start items-start overflow-auto" style={{
-    padding: '1rem',
-    paddingBottom: '6rem',
-  }}>
-   <span> {fileContent}</span>
-  </div>;
+  const fileContent: string = await getFile(filePath.join("/"));
+
+  return (
+    <div
+      className="w-full h-full overflow-auto prose dark:prose-invert"
+      style={{
+        padding: "1rem",
+        paddingBottom: "6rem",
+      }}
+    >
+      {fileContent && <Markdown>{fileContent}</Markdown>}
+    </div>
+  );
 }
