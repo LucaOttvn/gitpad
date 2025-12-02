@@ -17,7 +17,7 @@ export default async function FileEditorPage(props: FileEditorPageProps) {
 
   return (
     <div className="w-full h-full ">
-      <FileEditor isPreviewMode={isPreviewMode} fileContent={fileContent} />
+      <FileEditor filePath={filePath.join("/")} fileContent={fileContent} isPreviewMode={isPreviewMode} />
     </div>
   );
 }

@@ -1,14 +1,36 @@
-'use client'
-import { useState } from "react";
+"use client";
+import {ChangeEvent, useState} from "react";
 import Markdown from "react-markdown";
+import {itemsToPush} from "../utils/signals";
 
 interface FileEditorProps {
-  isPreviewMode: boolean;
+  filePath: string;
   fileContent: string;
+  isPreviewMode: boolean;
 }
 
 export default function FileEditor(props: FileEditorProps) {
-  const [text, setText] = useState(props.fileContent)
+  const [text, setText] = useState(props.fileContent);
+
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const newContent = event.target.value;
+    setText(newContent);
+
+    const foundIndex = itemsToPush.value.findIndex((item) => item.path === props.filePath);
+
+    if (foundIndex !== -1) {
+      itemsToPush.value = itemsToPush.value.map((item, index) => (index === foundIndex ? {...item, content: newContent} : item));
+      return;
+    }
+    itemsToPush.value = [
+      ...itemsToPush.value,
+      {
+        path: props.filePath,
+        content: newContent,
+      },
+    ];
+  };
+
   return (
     <div className="w-full h-full">
       {props.isPreviewMode ? (
@@ -22,9 +44,7 @@ export default function FileEditor(props: FileEditorProps) {
           {props.fileContent && <Markdown>{props.fileContent}</Markdown>}
         </div>
       ) : (
-        <textarea value={text} onChange={(event) => {
-          setText(event.target.value)
-        }}></textarea>
+        <textarea value={text} onChange={handleChange}></textarea>
       )}
     </div>
   );
