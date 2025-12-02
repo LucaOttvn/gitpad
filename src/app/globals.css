@@ -70,6 +70,9 @@ body {
   align-items: center;
   background-color: var(--grey);
   border-radius: var(--borderRadiusL);
+  span {
+    margin: 0 1rem;
+  }
 }
 
 .fileExplorer {

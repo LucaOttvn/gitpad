@@ -1,4 +1,5 @@
 'use client'
+import { useState } from "react";
 import Markdown from "react-markdown";
 
 interface FileEditorProps {
@@ -7,6 +8,7 @@ interface FileEditorProps {
 }
 
 export default function FileEditor(props: FileEditorProps) {
+  const [text, setText] = useState(props.fileContent)
   return (
     <div className="w-full h-full">
       {props.isPreviewMode ? (
@@ -20,7 +22,9 @@ export default function FileEditor(props: FileEditorProps) {
           {props.fileContent && <Markdown>{props.fileContent}</Markdown>}
         </div>
       ) : (
-        <textarea defaultValue='Editor'></textarea>
+        <textarea value={text} onChange={(event) => {
+          setText(event.target.value)
+        }}></textarea>
       )}
     </div>
   );

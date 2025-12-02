@@ -1,6 +1,5 @@
 import FileEditor from "@/src/components/FileEditor";
 import getFile from "@/src/server-actions/get-file";
-import Markdown from "react-markdown";
 
 interface FileEditorPageProps {
   params: Promise<{filePath: string[]}>;
@@ -11,9 +10,8 @@ export default async function FileEditorPage(props: FileEditorPageProps) {
 
   const isPreviewMode = filePath[filePath.length - 1] === "preview";
 
-  console.log(filePath)
-
-  const filePathToFind = isPreviewMode ? filePath.splice(filePath.length -1) : filePath
+  // If preview mode => remove the last section of the url ("/preview") and search the file by path
+  const filePathToFind = isPreviewMode ? filePath.slice(0, -1) : filePath;
 
   const fileContent: string = await getFile(filePathToFind.join("/"));
 

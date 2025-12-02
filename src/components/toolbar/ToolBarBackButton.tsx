@@ -1,25 +1,34 @@
-"use client";
-import Image from "next/image";
-import "./shared-styles.scss";
-import {usePathname, useRouter} from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import {usePathname, useRouter} from "next/navigation";
 
-/**
- * Bottom toolbar with multiple functions.
- */
-export default function ToolBar() {
-  const router = useRouter();
+interface ToolBarBackButtonProps {
+  sections: string[];
+}
+
+export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
   const pathName = usePathname();
+  const router = useRouter();
 
-  const sections = pathName.split("/").filter((x) => x);
+  let isBackDisabled = props.sections.length === 1 ? " disabledLink" : " clickableItem";
 
   // Slice from 1 because the base url is /file-explorer
-  const backButtonHref = `/${sections.slice(1, sections.length - 1).join("/")}`;
+  let backButtonHref = `/file-explorer/${props.sections.slice(1, props.sections.length - 1).join("/")}`;
 
-  let isBackDisabled = sections.length === 1 ? " disabledLink" : " clickableItem";
+  // When the user clicks on the back button but it's in preview mode, they don't want to go back to the actual previous page, but to "file-editor" instead, so handle this
+  if (pathName.includes("preview")) {
+    console.log(backButtonHref);
+    backButtonHref =
+      "/" +
+      backButtonHref
+        .split("/")
+        .slice(0, props.sections.length - 1)
+        .filter((x) => x)
+        .join("/");
+  }
 
   return (
-    <div id="toolBar">
+    <>
       {/*
        When the user is navigating through pages, the back button redirects to the previous section, regardless of the actual previous page in the browser's navigation order. 
        When the user is in the file editor instead, the url includes the file's path (which contains many sections because it has "/" for each directory), so the back button performs a router.back() because otherwise the Link would redirect to the wrong page.
@@ -33,14 +42,26 @@ export default function ToolBar() {
        Would become .../file-editor/<folderName>/
        While it should become this instead: ../file-explorer/<previousPath>
       */}
-      {sections[0] !== "file-editor" ? (
+
+      {/* Normal back button behavior */}
+      {props.sections[0] !== "file-editor" && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </Link>
-      ) : (
+      )}
+
+      {/* If in file editor and preview mode */}
+      {props.sections[0] === "file-editor" && props.sections.includes("preview") && (
+        <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
+          <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
+        </Link>
+      )}
+
+      {/* If in file editor in editor mode */}
+      {props.sections[0] === "file-editor" && !props.sections.includes("preview") && (
         <button
           className={"mainButton" + isBackDisabled}
-          disabled={sections.length === 0}
+          disabled={props.sections.length === 0}
           onClick={() => {
             router.back();
           }}
@@ -48,12 +69,6 @@ export default function ToolBar() {
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </button>
       )}
-
-      {pathName.includes("file-editor") && (
-        <Link href={`${pathName}/preview`} className={"mainButton" + isBackDisabled}>
-          <span className="mx-5">Preview</span>
-        </Link>
-      )}
-    </div>
+    </>
   );
 }
