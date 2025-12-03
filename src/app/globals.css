@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 @font-face {
-  font-family: "SpaceGrotesk";
-  src: url("/fonts/SpaceGrotesk-Regular.ttf") format("truetype");
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Light.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -47,7 +47,7 @@
 }
 
 body {
-  font-family: "SpaceGrotesk", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--black);
   color: var(--white);
   width: 100%;
