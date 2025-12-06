@@ -1,8 +1,9 @@
-import {createFile} from "@/src/server-actions/create-file";
+import {createItem} from "@/src/server-actions/create-item";
 import {usePathname} from "next/navigation";
 import {useActionState} from "react";
 import {Sheet} from "react-modal-sheet";
 import TextInput from "../inputs/TextInput";
+import toast from "react-hot-toast";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -18,37 +19,32 @@ export default function BottomSheet(props: BottomSheetProps) {
 
   const [state, handleCreateFile, isPending] = useActionState(async (prevState: any, formData: FormData) => {
     const filePathName = sections.join("/");
-    const name = formData.get("name") as string;
+    const newItemName = formData.get("newItemName") as string;
 
-    // Validate input
-    if (!name || name.trim() === "") {
+    if (!newItemName || newItemName.trim() === "") {
       return {success: false, message: "Name cannot be empty"};
     }
 
-    const trimmedName = name.trim();
+    const trimmedName = newItemName.trim();
 
-    // Check if it's a folder (starts with /)
-    if (trimmedName.endsWith("/")) {
-      const folderName = trimmedName.slice(1); // Remove leading /
-      if (!folderName) {
-        return {success: false, message: "Folder name cannot be empty"};
+    // Check if it's a folder (ends with /) or a file with one of the allowed extensions
+    if (trimmedName.endsWith("/") || trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
+      try {
+        const response = await createItem(`${filePathName}/${trimmedName}`, "");
+        if (!response.success) throw Error(response.message);
+        return {success: true, message: `Created ${trimmedName.startsWith("/") ? "folder" : "file"} successfully!`};
+      } catch (error) {
+        console.log(error);
+        toast.error((error as {message: string}).message);
+        props.handleBottomSheet(false);
       }
-      await createFile(`${filePathName}/${trimmedName}`, ""); // GitHub creates folder with trailing /
-    }
-    // Check if it's a file with allowed extension
-    else if (trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
-      await createFile(`${filePathName}/${trimmedName}`, "");
-    }
-    // Block other extensions
-    else {
-      return {
-        success: false,
-        message: "Only .txt, .md files or folders (prefix with /) are allowed",
-      };
     }
 
-    props.handleBottomSheet(false);
-    return {success: true, message: `Created ${trimmedName.startsWith("/") ? "folder" : "file"} successfully!`};
+    // Block other extensions
+    return {
+      success: false,
+      message: "Only .txt, .md files or folders (prefix with /) are allowed",
+    };
   }, null);
 
   return (
@@ -69,7 +65,7 @@ export default function BottomSheet(props: BottomSheetProps) {
         </Sheet.Header>
         <Sheet.Content className="bottomSheetContent">
           <form action={handleCreateFile}>
-            <TextInput placeholder="Prefix with / to create folder, use .txt or .md for files" state={state} />
+            <TextInput name="newItemName" placeholder="Prefix with / to create folder, use .txt or .md for files" state={state} />
 
             <div className="w-full center gap-4 flex">
               <button type="button" className="mainButton clickableItem" onClick={() => props.handleBottomSheet(false)} disabled={isPending}>

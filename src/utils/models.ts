@@ -10,3 +10,8 @@ export interface TreeItem {
 export interface Content {
     name: string
 }
+
+export interface APIResponse {
+    success: boolean
+    message?: string
+}

@@ -2,6 +2,7 @@
 import "./inputs.scss";
 
 interface TextInputProps {
+  name: string
   placeholder?: string;
   disabled?: boolean;
   state: {
@@ -13,7 +14,7 @@ interface TextInputProps {
 export default function TextInput(props: TextInputProps) {
   return (
     <div className="textInputContainer">
-      <input name="name" type="text" placeholder={props.placeholder || ""} disabled={props.disabled || false} required />
+      <input name={props.name} type="text" placeholder={props.placeholder || ""} disabled={props.disabled || false} required />
 
       {props.state?.message && (
         <span

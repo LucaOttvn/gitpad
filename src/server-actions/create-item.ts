@@ -1,11 +1,12 @@
 'use server'
 
 import { base64encode } from 'byte-base64'
+import { APIResponse } from '../utils/models'
 
-export async function createFile(
+export async function createItem(
     filePath: string,
     fileContent: string
-) {
+): Promise<APIResponse> {
     try {
         const url = `https://api.github.com/repos/LucaOttvn/DOCS/contents/${filePath}`
 
@@ -37,11 +38,10 @@ export async function createFile(
         const result = await response.json()
         return {
             success: true,
-            file: result.content.html_url,
-            commit: result.commit.html_url
+            message: 'Item created successfully'
         }
     } catch (error) {
         console.error(error)
-        return error
+        return { message: (error as { message: string }).message, success: false }
     }
 }
