@@ -34,6 +34,7 @@ export async function pushFile(
     branch: "main",
   })
 
+  console.log(accessToken)
   const url = `https://api.github.com/repos/LucaOttvn/DOCS/contents/${path}`
 
   const res = await fetch(url, {

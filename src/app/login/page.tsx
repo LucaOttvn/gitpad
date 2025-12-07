@@ -1,16 +1,14 @@
 'use client'
-import { signIn, signOut, useSession } from "next-auth/react";
+import { PagesEnum } from "@/src/utils/enums";
+import { signIn, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+
 
 export default function LoginPage() {
   const {data: session} = useSession();
 
   if (session) {
-    return (
-      <div>
-        <p>Signed in as {session.user?.email}</p>
-        <button onClick={() => signOut()}>Sign out</button>
-      </div>
-    );
+    redirect(PagesEnum.fileExplorer)
   }
   return (
     <div>
