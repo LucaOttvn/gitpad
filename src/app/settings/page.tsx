@@ -4,7 +4,10 @@ import {signOut} from "next-auth/react";
 
 export default function SettingsPage() {
   return (
-    <div className="w-full h-full flex justify-start items-start p-4">
+    <div className="w-full h-full flex justify-start items-start flex-col p-4">
+      <h1 className="w-full text-center pb-10" style={{
+        fontSize: '200%'
+      }}>Settings</h1>
       <button className="mainButton clickableItem" onClick={()=> {
         signOut()
       }}>

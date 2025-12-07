@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
-import {PagesEnum} from "@/src/utils/enums";
+import { usePathname, useRouter } from "next/navigation";
+import { PagesEnum } from "@/src/utils/enums";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -11,7 +11,7 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
   const pathName = usePathname();
   const router = useRouter();
 
-  let isBackDisabled = props.sections.length === 1 ? " disabledLink" : " clickableItem";
+  let isBackDisabled = props.sections.length === 1 ? " disabledItem" : " clickableItem";
 
   // Slice from 1 because the base url is /file-explorer
   let backButtonHref = `/${PagesEnum.fileExplorer}/${props.sections.slice(1, props.sections.length - 1).join("/")}`;

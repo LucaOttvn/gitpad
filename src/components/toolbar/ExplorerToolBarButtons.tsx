@@ -15,7 +15,7 @@ export default function ExplorerToolBarButtons() {
   };
 
   return (
-    <div className="w-full start gap-2 ">
+    <div className="w-full start">
       <div className="w-full flex gap-2">
         {/* Search button */}
         <button className="mainButton clickableItem" disabled>

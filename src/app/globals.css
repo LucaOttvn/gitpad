@@ -84,7 +84,7 @@ h2 {
   }
 }
 
-.disabledLink {
+.disabledItem {
   pointer-events: none;
   opacity: 50%;
 }

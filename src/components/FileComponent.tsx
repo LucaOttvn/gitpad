@@ -4,6 +4,7 @@ import Image from "next/image";
 import "./shared-styles.scss";
 import AnimatedDiv from "./animated/AnimatedDiv";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 interface FileComponentProps {
   file: TreeItem;
@@ -11,17 +12,30 @@ interface FileComponentProps {
 }
 
 export default function FileComponent(props: FileComponentProps) {
+  const isExtensionValid = props.file.name.endsWith(".md") || props.file.name.endsWith(".txt");
   return (
     <AnimatedDiv delay={props.index != undefined ? 0.07 * props.index : 0}>
-      <Link
-        href={`/file-editor/${props.file.path}`}
-        className="treeItem clickableItem"
-        key={props.file.path}
-        style={{background: "var(--grey)"}}
-      >
-        <Image src="/icons/file.svg" alt="folder" width={20} height={20} />
-        <span>{props.file.name}</span>
-      </Link>
+      {isExtensionValid ? (
+        <Link href={`/file-editor/${props.file.path}`} className="treeItem clickableItem" key={props.file.path} style={{background: "var(--grey)"}}>
+          <Image src="/icons/file.svg" alt="folder" width={20} height={20} />
+          <span>{props.file.name}</span>
+        </Link>
+      ) : (
+        <div
+          key={props.file.path}
+          className="treeItem disabledItem"
+          style={{
+            background: 'var(--grey)',
+            pointerEvents: "all",
+          }}
+          onClick={() => {
+            toast.error("GitPad is only designed to handle .md or .txt files!");
+          }}
+        >
+          <Image src="/icons/file.svg" alt="folder" width={20} height={20} />
+          <span>{props.file.name}</span>
+        </div>
+      )}
     </AnimatedDiv>
   );
 }
