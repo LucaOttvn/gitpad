@@ -1,6 +1,8 @@
 import Image from "next/image";
 import {useState} from "react";
 import BottomSheet from "../bottom-sheet/BottomSheet";
+import { redirect } from "next/navigation"
+import { PagesEnum } from "@/src/utils/enums";
 
 export default function ExplorerToolBarButtons() {
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
@@ -14,6 +16,13 @@ export default function ExplorerToolBarButtons() {
       <button onClick={() => setIsBottomSheetOpen(true)} className="mainButton clickableItem">
         <span>
           <Image src="/icons/add.svg" alt="folder" width={20} height={20} />
+        </span>
+      </button>
+      <button className="mainButton clickableItem" onClick={()=> {
+        redirect('/')
+      }}>
+        <span>
+          <Image src="/icons/home.svg" alt="folder" width={20} height={20} />
         </span>
       </button>
       <div className="flex gap-2">
