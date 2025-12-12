@@ -12,6 +12,7 @@
   "dependencies": {
     "@preact/signals-react": "^3.6.1",
     "byte-base64": "^1.1.0",
+    "cookies-next": "^6.1.1",
     "framer-motion": "^12.23.24",
     "next": "^16.0.7",
     "next-auth": "^4.24.13",
