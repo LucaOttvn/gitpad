@@ -14,7 +14,7 @@
     "byte-base64": "^1.1.0",
     "cookies-next": "^6.1.1",
     "framer-motion": "^12.23.24",
-    "next": "^16.0.7",
+    "next": "16.0.10",
     "next-auth": "^4.24.13",
     "path-mapper-json": "^1.4.0",
     "react": "^19.2.1",
