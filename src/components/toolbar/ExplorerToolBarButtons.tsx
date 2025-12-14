@@ -4,6 +4,7 @@ import BottomSheet from "../bottom-sheet/BottomSheet";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {PagesEnum} from "@/src/utils/enums";
+import {deleteItem} from "@/src/server-actions/delete-item";
 
 export default function ExplorerToolBarButtons() {
   const pathName = usePathname();

@@ -1,7 +1,7 @@
-import {createItem} from "@/src/server-actions/create-item";
-import {usePathname} from "next/navigation";
-import {useActionState} from "react";
-import {Sheet} from "react-modal-sheet";
+import { createItem } from "@/src/server-actions/create-item";
+import { usePathname, useRouter } from "next/navigation";
+import { useActionState } from "react";
+import { Sheet } from "react-modal-sheet";
 import TextInput from "../inputs/TextInput";
 import toast from "react-hot-toast";
 
@@ -11,6 +11,7 @@ interface BottomSheetProps {
 }
 
 export default function BottomSheet(props: BottomSheetProps) {
+  const router = useRouter()
   const pathName = usePathname();
   const sections = pathName
     .split("/")
@@ -33,7 +34,10 @@ export default function BottomSheet(props: BottomSheetProps) {
         // If filePathName is empty (then the user is creating a new item in the root folder), exclude the slash
         const response = await createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`);
         if (!response.success) throw Error(response.message);
-        return {success: true, message: `Created ${trimmedName.startsWith("/") ? "folder" : "file"} successfully!`};
+        props.handleBottomSheet(false);
+        toast.success('Item created successfully');
+        location.reload()
+        return {success: true, message: 'Item created successfully'}
       } catch (error) {
         console.error(error);
         toast.error((error as any).message);

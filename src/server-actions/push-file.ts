@@ -22,6 +22,7 @@ export async function pushFile(
   let sha = ""
   try {
     const file = await getFileMetadata(path)
+    if (!file) throw Error('No file metadata available')
     sha = file.sha
   } catch (error) {
     console.error(error)
