@@ -30,12 +30,13 @@ export default function BottomSheet(props: BottomSheetProps) {
     // Check if it's a folder (ends with /) or a file with one of the allowed extensions
     if (trimmedName.endsWith("/") || trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
       try {
-        const response = await createItem(`${filePathName}/${trimmedName}`);
+        // If filePathName is empty (then the user is creating a new item in the root folder), exclude the slash
+        const response = await createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`);
         if (!response.success) throw Error(response.message);
         return {success: true, message: `Created ${trimmedName.startsWith("/") ? "folder" : "file"} successfully!`};
       } catch (error) {
-        console.log(error);
-        toast.error((error as {message: string}).message);
+        console.error(error);
+        toast.error((error as any).message);
         props.handleBottomSheet(false);
       }
     }
