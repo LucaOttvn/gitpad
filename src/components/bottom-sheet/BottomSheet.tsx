@@ -13,7 +13,7 @@ interface BottomSheetProps {
 export default function BottomSheet(props: BottomSheetProps) {
   const router = useRouter()
   const pathName = usePathname();
-  
+
   const sections = pathName
     .split("/")
     .filter((x) => x)
@@ -27,6 +27,7 @@ export default function BottomSheet(props: BottomSheetProps) {
       return {success: false, message: "Name cannot be empty"};
     }
 
+    
     const trimmedName = newItemName.trim();
 
     // Check if it's a folder (ends with /) or a file with one of the allowed extensions
