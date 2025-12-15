@@ -32,7 +32,7 @@ export default function BottomSheet(props: BottomSheetProps) {
     const trimmedName = newItemName.trim();
 
     // Check if it's a folder (ends with /) or a file with one of the allowed extensions
-    if (trimmedName.endsWith("/") || trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
+    if (trimmedName.startsWith("/") || trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
       try {
         // If filePathName is empty (then the user is creating a new item in the root folder), exclude the slash
         const response = await createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`);
@@ -69,7 +69,7 @@ export default function BottomSheet(props: BottomSheetProps) {
       <Sheet.Container className="bottomSheetContainer">
         <Sheet.Header className="bottomSheetHeader">
           <Sheet.DragIndicator />
-          <h2>Create new item or folder</h2>
+          <h2>Create new item/folder</h2>
         </Sheet.Header>
         <Sheet.Content className="bottomSheetContent">
           <form action={handleCreateFile}>

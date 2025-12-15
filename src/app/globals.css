@@ -55,6 +55,7 @@
 body {
   font-family: "SpaceMono-Regular", sans-serif;
   font-weight: 100;
+  font-size: 0.9rem;
   background-color: var(--black);
   color: var(--white);
   width: 100%;
@@ -62,13 +63,13 @@ body {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 150%;
   font-weight: 600;
   letter-spacing: 0.2;
 }
 
 h2 {
-  font-size: 1.25rem;
+  font-size: 125%;
   font-weight: 600;
   letter-spacing: 0.2;
 }

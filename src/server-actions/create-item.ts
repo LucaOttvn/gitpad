@@ -1,9 +1,8 @@
-'use server';
+'use server';;
 import { APIResponse } from '../utils/models';
 import getGithubApiUrl from './get-github-api-url';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../app/api/auth/[...nextauth]/route';
-import { revalidatePath } from 'next/cache';
 
 export async function createItem(
     filePath: string
