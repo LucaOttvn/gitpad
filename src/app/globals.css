@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 @font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Regular.ttf") format("truetype");
+  font-family: "SpaceMono-Regular";
+  src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
   --white: #ffffff;
   --darkWhite: #e6e6e6;
   --black: #101010;
-  --lightBlack: #202020;
+  --lightBlack: #181818;
   --darkGrey: #252525;
   --grey: #303030;
   --lightGrey: #404040;
@@ -53,8 +53,8 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
+  font-family: "SpaceMono-Regular", sans-serif;
+  font-weight: 100;
   background-color: var(--black);
   color: var(--white);
   width: 100%;
@@ -77,7 +77,6 @@ h2 {
   transition: 0.2s;
   &:not(:disabled):active {
     scale: 0.95;
-    filter: invert(1);
   }
   &:disabled {
     opacity: 50%;
@@ -95,8 +94,9 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--grey);
-  border-radius: var(--borderRadiusL);
+  background-color: var(--black);
+  border: solid 0.5px var(--darkWhite);
+
   span {
     margin: 0 1rem;
   }

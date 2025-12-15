@@ -16,7 +16,7 @@ export default function FileComponent(props: FileComponentProps) {
   return (
     <AnimatedDiv delay={props.index != undefined ? 0.07 * props.index : 0}>
       {isExtensionValid ? (
-        <Link href={`/file-editor/${props.file.path}`} className="treeItem clickableItem" key={props.file.path} style={{background: "var(--grey)"}}>
+        <Link href={`/file-editor/${props.file.path}`} className="treeItem clickableItem" key={props.file.path} >
           <Image src="/icons/file.svg" alt="folder" width={20} height={20} />
           <span>{props.file.name}</span>
         </Link>
@@ -25,7 +25,6 @@ export default function FileComponent(props: FileComponentProps) {
           key={props.file.path}
           className="treeItem disabledItem"
           style={{
-            background: 'var(--grey)',
             pointerEvents: "all",
           }}
           onClick={() => {

@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { Sheet } from "react-modal-sheet";
 import TextInput from "../inputs/TextInput";
 import toast from "react-hot-toast";
+import './style.scss'
 
 interface BottomSheetProps {
   isOpen: boolean;

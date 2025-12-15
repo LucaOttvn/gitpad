@@ -18,7 +18,7 @@ export default function FolderComponent(props: FolderComponentProps) {
   const href = `${parentPath}/${props.folder.name}`;
   return (
     <AnimatedDiv delay={props.index != undefined ? 0.07 * props.index : 0}>
-      <Link href={href} className="treeItem clickableItem" style={{background: "var(--lightBlack)"}}>
+      <Link href={href} className="treeItem clickableItem" >
         <Image src="/icons/folder.svg" alt="folder" width={20} height={20} />
         <span>{props.folder.name}</span>
       </Link>

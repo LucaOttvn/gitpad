@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    border-radius: var(--borderRadiusL);
+    // border-radius: var(--borderRadiusL);
     gap: 0.5rem;
 
     input {
@@ -11,8 +11,10 @@
         width: 100%;
         padding: 1rem;
         transition: 0.2s;
-        background-color: var(--grey) !important;
-        border: solid 1px var(--lightGrey);
+        // background-color: var(--grey) !important;
+        // border: solid 1px var(--lightGrey);
+        border: solid 0.5px var(--darkWhite);
+
 
         &:focus {
             outline: none;

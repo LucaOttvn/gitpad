@@ -8,39 +8,7 @@
     bottom: 1rem;
     left: 1rem;
     background-color: var(--lightBlack);
-    border-radius: var(--borderRadiusXL);
+    // border-radius: var(--borderRadiusXL);
+    border: solid 1px var(--grey);
     padding: 0.5rem;
-}
-
-.bottomSheet {
-    .bottomSheetBackdrop {
-        backdrop-filter: blur(4px);
-    }
-
-    .bottomSheetHeader {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .bottomSheetContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        background-color: var(--lightBlack) !important;
-        padding: 2rem 1rem 3rem 1rem;
-        border-radius: var(--borderRadiusM) var(--borderRadiusL) 0 0;
-
-        // Bottom sheet content
-        .react-modal-sheet-content-scroller {
-            form {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 2rem;
-            }
-        }
-    }
 }

@@ -12,7 +12,6 @@ export default async function getRepoContents() {
                 Authorization: `Bearer ${session.accessToken}`,
                 'Accept': 'application/vnd.github+json'
             },
-            next: { revalidate: 3600 }
         })
         return await response.json()
     } catch (error) {

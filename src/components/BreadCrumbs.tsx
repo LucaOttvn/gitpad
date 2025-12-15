@@ -1,7 +1,6 @@
 "use client";
-import {usePathname, useRouter} from "next/navigation";
+import { usePathname } from "next/navigation";
 import "./shared-styles.scss";
-import ShadowScroller from "./ShadowScroller";
 import Link from "next/link";
 import { PagesEnum } from "../utils/enums";
 
@@ -14,14 +13,12 @@ export default function BreadCrumbs() {
 
   return (
     <div className="breadCrumbs">
-      <ShadowScroller top={0} right={0} width="8%" height="100%" deg="90" />
       <div className="scrollableContent">
         {filteredBreadCrumbs.map((breadCrumb, index) => {
           const href = `/${PagesEnum.fileExplorer}/${filteredBreadCrumbs.slice(0, index + 1).join("/")}`;
           return <Link key={breadCrumb + index} href={href} className="breadCrumb">{`/ ${breadCrumb}`}</Link>;
         })}
       </div>
-      <ShadowScroller top={0} left={0} width="8%" height="100%" deg="-90" />
     </div>
   );
 }

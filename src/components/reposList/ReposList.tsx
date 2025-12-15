@@ -4,6 +4,7 @@ import { getUserRepos } from "../../server-actions/get-user-repos";
 import "./style.scss";
 import { getCookie, setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
+import '../shared-styles.scss'
 
 export default function ReposList() {
 
@@ -38,10 +39,11 @@ export default function ReposList() {
               handleCookie(repoName);
             }}
             key={repoName}
-            className="repo clickableItem"
+            className="treeItem clickableItem"
             style={{
               background: getCookie('selectedRepo') === repoName ? 'var(--white)' : '',
-              color: getCookie('selectedRepo') === repoName ? 'var(--black)' : ''
+              color: getCookie('selectedRepo') === repoName ? 'var(--black)' : '',
+              padding: '0.5rem'
             }}
           >
             {repoName}
