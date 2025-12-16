@@ -24,7 +24,7 @@
   
   --darkGrey: #252525;
   --grey: #303030;
-  --lightGrey: #999999;
+  --lightGrey: #9090902;
 
   --green: #00a674;
   --darkGreen: #003e2c;
@@ -98,7 +98,7 @@ h2 {
   justify-content: center;
   align-items: center;
   background-color: var(--black);
-  border: solid 0.5px var(--darkWhite);
+  border: solid 1px var(--lightGrey);
 
   span {
     margin: 0 1rem;
