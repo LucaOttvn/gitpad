@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth"
 export async function pushFile(
   path: string,
   content: string,
-) {
+): Promise<{status: string, message: string}> {
   // Get user session
   const session = await getServerSession(authOptions)
 

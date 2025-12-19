@@ -36,15 +36,18 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
     setItemToUpdate(foundItemToUpdate);
   });
 
-
   const handlePush = async () => {
     if (!itemToUpdate) return;
     try {
-      const result = await pushFile(filePath, itemToUpdate.content);
-      if (result.status == "ok") return toast.success("File pushed!");
+      const promise = pushFile(filePath, itemToUpdate.content);
+
+      toast.promise(promise, {
+        loading: "Pushing file...",
+        success: "File Pushed!",
+        error: "Error while pushing",
+      });
     } catch (error) {
       console.error(error);
-      toast.error("Push failed");
     }
   };
 
