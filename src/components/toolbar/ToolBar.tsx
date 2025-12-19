@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import "./style.scss";
 import { usePathname } from "next/navigation";
 import ToolBarBackButton from "./ToolBarBackButton";

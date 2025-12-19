@@ -22,7 +22,8 @@
     "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0",
     "react-modal-sheet": "^5.2.1",
-    "sass": "^1.94.2"
+    "sass": "^1.94.2",
+    "sonner": "^2.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

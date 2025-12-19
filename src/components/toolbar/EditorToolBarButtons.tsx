@@ -49,6 +49,8 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
     } catch (error) {
       console.error(error);
     }
+
+    router.refresh()
   };
 
   const handleDelete = async () => {

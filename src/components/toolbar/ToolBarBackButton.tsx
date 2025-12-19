@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { PagesEnum } from "@/src/utils/enums";
+import { toast } from "react-hot-toast";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -56,27 +57,52 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
        Would become .../file-editor/<folderName>/
        While it should become this instead: ../file-explorer/<previousPath>
       */}
-
       {/* Back button behavior in file-explorer */}
       {props.sections[0] === PagesEnum.fileExplorer && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </Link>
       )}
-
       {/* If in file editor and preview mode */}
       {props.sections[0] === PagesEnum.fileEditor && props.sections.includes("preview") && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
         </Link>
       )}
-
       {/* If in file editor in editor mode */}
       {isStandardBack && (
         <button
           className="mainButton clickableItem"
           onClick={() => {
-            router.back();
+            toast(
+              (t) => (
+                <div className="flex flex-col gap-3">
+                  <span>
+                    There are some updates to push. <br /> If you go back now they will be discarded
+                  </span>
+                  <div className="flex gap-2 justify-end pt-2">
+                    <button
+                      onClick={() => {
+                        toast.dismiss(t.id);
+                        router.back();
+                      }}
+                      className="mainButton clickableItem"
+                      style={{
+                        color: "var(--white)",
+                      }}
+                    >
+                      <span>Discard & Leave</span>
+                    </button>
+                    <button onClick={() => toast.dismiss(t.id)} className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
+                      Stay
+                    </button>
+                  </div>
+                </div>
+              ),
+              {
+                duration: Infinity, // Stays until dismissed
+              }
+            );
           }}
         >
           <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
