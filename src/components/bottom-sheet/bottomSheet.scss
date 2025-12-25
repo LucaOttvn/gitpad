@@ -1,32 +1,13 @@
 .bottomSheet {
-    .bottomSheetBackdrop {
-        backdrop-filter: blur(4px);
-    }
+    z-index: 1;
+    background-color: var(--black);
+    border-top: solid 1px var(--white);
+    border-radius: 0;
+    padding-bottom: 2rem;
 
-    .bottomSheetHeader {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .bottomSheetContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        background-color: var(--lightBlack) !important;
-        padding: 2rem 1.5rem 3rem 1.5rem;
-        // border-radius: var(--borderRadiusM) var(--borderRadiusL) 0 0;
-        border-radius: 0 !important;
-        // Bottom sheet content
-        .react-modal-sheet-content-scroller {
-            form {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 2rem;
-            }
-        }
+    .instructions {
+        font-size: 70%;
+        background-color: var(--blue);
+        padding: 0.5rem;
     }
 }

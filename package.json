@@ -10,10 +10,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@heroui/drawer": "^2.2.26",
+    "@heroui/react": "^2.8.7",
+    "@heroui/system": "^2.4.25",
+    "@heroui/theme": "^2.4.25",
     "@preact/signals-react": "^3.6.1",
     "byte-base64": "^1.1.0",
     "cookies-next": "^6.1.1",
-    "framer-motion": "^12.23.24",
+    "framer-motion": "^12.23.26",
     "next": "^16.0.10",
     "next-auth": "^4.24.13",
     "path-mapper-json": "^1.4.0",
@@ -21,7 +25,6 @@
     "react-dom": "^19.2.1",
     "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0",
-    "react-modal-sheet": "^5.2.1",
     "sass": "^1.94.2",
     "sonner": "^2.0.7"
   },

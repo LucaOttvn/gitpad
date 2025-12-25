@@ -1,10 +1,11 @@
 import { createItem } from "@/src/server-actions/create-item";
 import { usePathname } from "next/navigation";
 import { useActionState } from "react";
-import { Sheet } from "react-modal-sheet";
 import TextInput from "../inputs/TextInput";
 import toast from "react-hot-toast";
 import "./bottomSheet.scss";
+import { Drawer, DrawerContent, DrawerHeader, DrawerBody } from "@heroui/drawer";
+import { HeroUIProvider } from "@heroui/system";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -41,9 +42,9 @@ export default function BottomSheet(props: BottomSheetProps) {
           error: "Error while creating",
         });
         props.handleBottomSheet(false);
-        setTimeout(()=> {
+        setTimeout(() => {
           location.reload();
-        }, 500)
+        }, 500);
         return {success: true, message: "Item created successfully"};
       } catch (error) {
         console.error(error);
@@ -59,45 +60,43 @@ export default function BottomSheet(props: BottomSheetProps) {
   }, null);
 
   return (
-    <Sheet
-      isOpen={props.isOpen}
-      onClose={() => props.handleBottomSheet(false)}
-      detent="content"
-      className="bottomSheet"
-      tweenConfig={{
-        ease: "easeInOut",
-        duration: 0.25,
-      }}
-    >
-      <Sheet.Container className="bottomSheetContainer">
-        <Sheet.Header className="bottomSheetHeader">
-          <Sheet.DragIndicator />
-          <h2>Create file or folder</h2>
-        </Sheet.Header>
-        <Sheet.Content className="bottomSheetContent">
-          <form action={handleCreateFile}>
-            <TextInput name="newItemName" placeholder="Prefix with / to create folder, use .txt or .md for files" state={state} />
+    <HeroUIProvider>
+      <Drawer isOpen={props.isOpen} placement="bottom" className="bottomSheet" hideCloseButton backdrop="blur" onOpenChange={() => {
+        props.handleBottomSheet(false)
+      }}>
+        <DrawerContent className="bottomSheetContent">
+          {(onClose) => (
+            <>
+              <DrawerHeader className="w-full center mb-4">Create file or folder</DrawerHeader>
+              <DrawerBody>
+                <form action={handleCreateFile} className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-5">
+                    <span className="instructions">Prefix with / to create a folder. <br /> Use .txt or .md for files.</span>
+                    <TextInput name="newItemName" placeholder="Insert name" state={state} />
+                  </div>
 
-            <div className="w-full center gap-4 flex">
-              <button type="button" className="mainButton clickableItem" onClick={() => props.handleBottomSheet(false)} disabled={isPending}>
-                <span>Cancel</span>
-              </button>
-              <button
-                type="submit"
-                className="mainButton clickableItem"
-                style={{
-                  background: "var(--darkWhite)",
-                  color: "var(--black)",
-                }}
-                disabled={isPending}
-              >
-                <span>{isPending ? "Creating..." : "Create"}</span>
-              </button>
-            </div>
-          </form>
-        </Sheet.Content>
-      </Sheet.Container>
-      <Sheet.Backdrop unstyled onTap={() => props.handleBottomSheet(false)} className="bottomSheetBackdrop" />
-    </Sheet>
+                  <div className="w-full center gap-4 flex">
+                    <button type="button" className="mainButton clickableItem" onClick={() => props.handleBottomSheet(false)} disabled={isPending}>
+                      <span>Cancel</span>
+                    </button>
+                    <button
+                      type="submit"
+                      className="mainButton clickableItem"
+                      style={{
+                        background: "var(--darkWhite)",
+                        color: "var(--black)",
+                      }}
+                      disabled={isPending}
+                    >
+                      <span>{isPending ? "Creating..." : "Create"}</span>
+                    </button>
+                  </div>
+                </form>
+              </DrawerBody>
+            </>
+          )}
+        </DrawerContent>
+      </Drawer>
+    </HeroUIProvider>
   );
 }
