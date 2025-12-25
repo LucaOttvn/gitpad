@@ -1,10 +1,11 @@
-import { Suspense } from "react";
+import {Suspense} from "react";
 import "./settings.scss";
 import ReposList from "@/src/components/reposList/ReposList";
+import LogoutButton from "@/src/components/buttons/LogoutButton";
 
 export default function SettingsPage() {
   return (
-    <div className="w-full h-full flex justify-start items-start flex-col p-4 gap-8">
+    <div className="w-full h-full flex flex-col justify-start items-center p-4 gap-8 overflow-y-scroll">
       <h1
         className="w-full text-center"
         style={{
@@ -16,7 +17,7 @@ export default function SettingsPage() {
       <Suspense fallback={<div>Loading</div>}>
         <ReposList />
       </Suspense>
-      {/* <Button onClick={signOut} iconSrc="/icons/logout.svg" label="Logout" /> */}
+      <LogoutButton />
     </div>
   );
 }

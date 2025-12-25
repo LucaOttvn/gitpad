@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/src/components/buttons/Button";
 import {PagesEnum} from "@/src/utils/enums";
 import {signIn, useSession} from "next-auth/react";
 import Image from "next/image";
@@ -24,18 +25,17 @@ export default function LoginPage() {
         />
         <h1 style={{fontSize: "250%"}}>GitPad</h1>
       </div>
-      <button onClick={() => signIn("github")} className="mainButton clickableItem">
-        <Image
-          src="/icons/github.svg"
-          alt="Logo"
-          width={25}
-          height={25}
-          style={{
-            marginLeft: '1rem'
-          }}
-        />
-        <span>Sign in with Github</span>
-      </button>
+      <Button
+        onClick={() => {
+          signIn("github");
+        }}
+        iconSrc="/icons/github.svg"
+        style={{
+          width:'fit-content',
+          border: 'solid 1px var(--lightGrey)'
+        }}
+        label="Sign in with Github"
+      />
     </div>
   );
 }

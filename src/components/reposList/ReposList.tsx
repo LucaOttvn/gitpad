@@ -9,7 +9,7 @@ export default async function ReposList() {
 
   return (
     <div id="reposListContainer">
-      <h2>Repositories</h2>
+      <h2>Select your repo</h2>
       <div id="reposList">
         {reposNames.map((repoName: string) => (
           <Repo key={repoName} repoName={repoName}/>

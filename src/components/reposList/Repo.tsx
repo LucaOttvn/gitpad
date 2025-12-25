@@ -39,16 +39,17 @@ export default function Repo({repoName}: RepoProps) {
   const isSelected = selectedRepo === repoName;
 
   return (
-    <button
-      onClick={() => handleCookie(repoName)}
-      className="treeItem clickableItem"
-      style={{
-        background: isSelected ? "var(--white)" : "",
-        color: isSelected ? "var(--blue)" : "",
-        padding: "0.5rem",
-      }}
-    >
-      {repoName}
+    <button onClick={() => handleCookie(repoName)} className="treeItem clickableItem">
+      <span
+        style={{
+          width: '100%',
+          background: isSelected ? "var(--blue)" : "",
+          color: isSelected ? "var(--white)" : "",
+          padding: "0 0.5rem",
+        }}
+      >
+        {repoName}
+      </span>
     </button>
   );
 }
