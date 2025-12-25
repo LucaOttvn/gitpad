@@ -5,7 +5,7 @@ import getRepoContents from "@/src/server-actions/get-repo";
 import { TypesEnum } from "@/src/utils/enums";
 import { TreeItem } from "@/src/utils/models";
 import { buildTree, findByPath } from "path-mapper-json";
-import '../style.scss'
+import '../fileExplorer.scss';
 
 interface FolderPageProps {
   params: Promise<{folderPath: string[]}>;
@@ -46,7 +46,7 @@ export default async function FolderPage(props: FolderPageProps) {
   return (
     <div className="fileExplorer">
       <BreadCrumbs />
-      <div className="fileExplorerGrid">
+      <div className="fileExplorerList">
         {/* For the rest of the tree, show the children */}
         {arr.map((item, index) => {
           if (item.type === TypesEnum.tree) return <FolderComponent key={item.path} folder={item} index={index} />;
