@@ -1,4 +1,5 @@
-import "./style.scss";
+import { Suspense } from "react";
+import "./settings.scss";
 import ReposList from "@/src/components/reposList/ReposList";
 
 export default function SettingsPage() {
@@ -12,7 +13,9 @@ export default function SettingsPage() {
       >
         Settings
       </h1>
-      <ReposList />
+      <Suspense fallback={<div>Loading</div>}>
+        <ReposList />
+      </Suspense>
       {/* <Button onClick={signOut} iconSrc="/icons/logout.svg" label="Logout" /> */}
     </div>
   );

@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 1rem 0.5rem 0.5rem 0.5rem;
-    background: var(--lightBlack);
+    border: solid 1px var(--lightGrey);
     // border-radius: var(--borderRadiusM);
     gap: 1rem;
 
@@ -14,12 +14,12 @@
     }
 
     #reposList {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
+        display: flex;
+        flex-direction: column;
         overflow-y: scroll;
 
         .repo {
+            width: 100%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
