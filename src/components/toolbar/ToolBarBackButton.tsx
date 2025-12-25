@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
-import {PagesEnum} from "@/src/utils/enums";
-import {toast} from "react-hot-toast";
-import {itemToPush} from "@/src/utils/signals";
+import { usePathname, useRouter } from "next/navigation";
+import { PagesEnum } from "@/src/utils/enums";
+import { toast } from "react-hot-toast";
+import { itemToPush } from "@/src/utils/signals";
 
 interface ToolBarBackButtonProps {
   sections: string[];
@@ -103,19 +103,19 @@ export default function ToolBarBackButton(props: ToolBarBackButtonProps) {
       {/* Back button behavior in file-explorer */}
       {props.sections[0] === PagesEnum.fileExplorer && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
-          <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
+          <Image src="/icons/back.svg" alt="back" width={25} height={25} />
         </Link>
       )}
       {/* If in file editor and preview mode */}
       {props.sections[0] === PagesEnum.fileEditor && props.sections.includes("preview") && (
         <Link href={backButtonHref} className={"mainButton" + isBackDisabled}>
-          <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
+          <Image src="/icons/back.svg" alt="back" width={25} height={25} />
         </Link>
       )}
       {/* If in file editor in editor mode */}
       {isStandardBack && (
         <button className="mainButton clickableItem" onClick={handleBack}>
-          <Image src="/icons/arrow-left.svg" alt="back" width={20} height={20} />
+          <Image src="/icons/back.svg" alt="back" width={25} height={25} />
         </button>
       )}
     </>

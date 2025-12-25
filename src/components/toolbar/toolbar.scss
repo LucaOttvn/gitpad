@@ -1,0 +1,12 @@
+#toolBar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(15px);
+    border-top: solid 1px var(--lightGrey);
+    padding: 0.5rem;
+}

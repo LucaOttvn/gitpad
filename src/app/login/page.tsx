@@ -28,8 +28,8 @@ export default function LoginPage() {
         <Image
           src="/icons/github.svg"
           alt="Logo"
-          width={20}
-          height={20}
+          width={25}
+          height={25}
           style={{
             marginLeft: '1rem'
           }}

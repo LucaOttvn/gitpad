@@ -1,13 +1,13 @@
 "use client";
-import {deleteItem} from "@/src/server-actions/delete-item";
-import {pushFile} from "@/src/server-actions/push-file";
-import {useSignal} from "@preact/signals-react";
+import { deleteItem } from "@/src/server-actions/delete-item";
+import { pushFile } from "@/src/server-actions/push-file";
+import { useSignal } from "@preact/signals-react";
 import Link from "next/link";
-import {usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 import toast from "react-hot-toast";
 import Image from "next/image";
-import {useRouter} from "next/navigation";
-import {itemToPush} from "@/src/utils/signals";
+import { useRouter } from "next/navigation";
+import { itemToPush } from "@/src/utils/signals";
 import { APIResponse } from "@/src/utils/models";
 
 interface EditorToolBarButtonsProps {
@@ -37,7 +37,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
         success: "File Pushed!",
         error: "Error while pushing",
       });
-      if ((result as APIResponse).success) itemToPush.value = undefined
+      if ((result as APIResponse).success) itemToPush.value = undefined;
     } catch (error) {
       console.error(error);
     }
@@ -72,13 +72,14 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
               }}
               className="mainButton clickableItem"
               style={{
-                color: "var(--white)",
+                background: "var(--white)",
+                color: "var(--blue)",
               }}
             >
               <span>Confirm</span>
             </button>
-            <button onClick={() => toast.dismiss(t.id)} className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
-              Cancel
+            <button onClick={() => toast.dismiss(t.id)} className="mainButton clickableItem">
+              <span>Cancel</span>
             </button>
           </div>
         </div>
@@ -95,16 +96,22 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
     <>
       {isPreviewMode ? (
         <Link href={`${editorHref}`} className="mainButton clickableItem">
-          <span>Editor</span>
+          <span>
+            <Image src="/icons/edit.svg" alt="edit" width={25} height={25} />
+          </span>
         </Link>
       ) : (
         <Link href={`${pathName}/preview`} className="mainButton clickableItem">
-          <span>Preview</span>
+          <span>
+            <Image src="/icons/eye.svg" alt="visibility" width={25} height={25} />
+          </span>
         </Link>
       )}
 
       <button className="mainButton clickableItem" onClick={handlePush}>
-        <span>Push</span>
+        <span>
+          <Image src="/icons/upload.svg" alt="upload" width={25} height={25} />
+        </span>
       </button>
       {/* Trash button */}
       <button
@@ -114,7 +121,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
         className="mainButton clickableItem"
       >
         <span>
-          <Image src="/icons/trash.svg" alt="folder" width={20} height={20} />
+          <Image src="/icons/trash.svg" alt="trash" width={25} height={25} />
         </span>
       </button>
     </>

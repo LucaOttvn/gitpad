@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { Sheet } from "react-modal-sheet";
 import TextInput from "../inputs/TextInput";
 import toast from "react-hot-toast";
-import "./style.scss";
+import "./bottomSheet.scss";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -72,7 +72,7 @@ export default function BottomSheet(props: BottomSheetProps) {
       <Sheet.Container className="bottomSheetContainer">
         <Sheet.Header className="bottomSheetHeader">
           <Sheet.DragIndicator />
-          <h2>Create new item/folder</h2>
+          <h2>Create file or folder</h2>
         </Sheet.Header>
         <Sheet.Content className="bottomSheetContent">
           <form action={handleCreateFile}>

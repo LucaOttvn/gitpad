@@ -4,14 +4,14 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 1rem;
-  gap: 1rem;
 
   .fileExplorerGrid {
     width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-bottom: 5rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 0.5rem;
   }
 }
 

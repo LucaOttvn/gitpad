@@ -1,5 +1,5 @@
 "use client";
-import "./style.scss";
+import "./toolbar.scss";
 import { usePathname } from "next/navigation";
 import ToolBarBackButton from "./ToolBarBackButton";
 import EditorToolBarButtons from "./EditorToolBarButtons";

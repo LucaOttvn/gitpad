@@ -16,7 +16,7 @@ export default function BreadCrumbs() {
       <div className="scrollableContent">
         {filteredBreadCrumbs.map((breadCrumb, index) => {
           const href = `/${PagesEnum.fileExplorer}/${filteredBreadCrumbs.slice(0, index + 1).join("/")}`;
-          return <Link key={breadCrumb + index} href={href} className="breadCrumb">{`/ ${breadCrumb}`}</Link>;
+          return <Link key={breadCrumb + index} href={href} className="breadCrumb">{`/${breadCrumb}`}</Link>;
         })}
       </div>
     </div>

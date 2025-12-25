@@ -2,9 +2,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border: solid 1px var(--lightGrey);
-    padding: 1rem 0.7rem;
-    gap: 0.5rem;
+    border-bottom: solid 1px var(--lightGrey);
+    padding: 0.8rem 0.5rem;
 
     span {
         overflow: hidden;
@@ -15,11 +14,14 @@
 
 .breadCrumbs {
     width: 100%;
-    border: solid 1px var(--grey);
-    background-color: var(--lightBlack);
-    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-bottom: solid 1px var(--lightGrey);
+
+    backdrop-filter: blur(15px);
+    padding: 1rem 0.5rem;
     overflow: hidden;
-    position: relative;
 
     .scrollableContent {
         width: 100%;
@@ -39,10 +41,12 @@
             justify-content: flex-start;
             align-items: center;
             flex-shrink: 0;
-            background-color: var(--white);
-            border: solid 1px var(--lightGrey);
+            background-color: var(--blue);
+            color: var(--white);
+
+            font-family: "SpaceMono-Regular", sans-serif;
+            font-weight: lighter;
             padding: 0.2rem 0.5rem;
-            color: var(--black);
         }
     }
 
@@ -53,6 +57,7 @@ textarea {
     height: 100%;
     padding: 1rem;
     padding-bottom: 6rem;
+
     &:focus {
         outline: none;
     }

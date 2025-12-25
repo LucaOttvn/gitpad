@@ -18,7 +18,7 @@ export default function Button(props: ButtonProps) {
         props.onClick()
       }}
     >
-      {props.iconSrc && <Image src={props.iconSrc} alt="back" className="ml-4" width={20} height={20} />}
+      {props.iconSrc && <Image src={props.iconSrc} alt="back" className="ml-4" width={25} height={25} />}
       <span style={{marginLeft: "0.5rem"}}>{props.label}</span>
     </button>
   );

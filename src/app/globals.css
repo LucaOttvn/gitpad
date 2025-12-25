@@ -9,17 +9,27 @@
   font-display: swap;
 }
 
+@font-face {
+    font-family: "SpaceMono-Regular";
+    src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
   --mainBoxShadow: var(--Black) 2px 2px 5px;
   --bigBoxShadow: var(--Black) 0px 10px 30px;
   --borderRadiusM: 0.5rem;
   --borderRadiusL: 1.5rem;
   --borderRadiusXL: 2rem;
+  
+  --glass: hsla(0, 0%, 100%, 0.1);
 
   --white: #ffffff;
   --darkWhite: #e6e6e6;
 
-  --black: #101010;
+  --black: #000000;
   --lightBlack: #181818;
 
   --darkGrey: #252525;
@@ -30,13 +40,15 @@
   --darkGreen: #003e2c;
 
   --red: #d62828;
+
+  --blue: #083BFE;
 }
 
 /* Prevent zoom on input focus (iOS Safari) */
 input,
 textarea,
 select {
-  font-size: 16px; /* Minimum 16px prevents auto-zoom */
+  font-size: 16px;
   touch-action: manipulation; /* Faster touch response */
 }
 
@@ -72,8 +84,7 @@ select {
 
 body {
   font-family: "SpaceMono-Regular", sans-serif;
-  font-weight: 100;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   background-color: var(--black);
   color: var(--white);
   width: 100%;
@@ -108,13 +119,13 @@ h2 {
 }
 
 .mainButton {
+  width: 100%;
   min-width: 3rem;
   min-height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--black);
-  border: solid 1px var(--lightGrey);
+
 
   span {
     margin: 0 1rem;
