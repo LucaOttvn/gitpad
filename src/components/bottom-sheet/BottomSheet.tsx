@@ -1,11 +1,11 @@
-import { createItem } from "@/src/server-actions/create-item";
-import { usePathname } from "next/navigation";
-import { useActionState } from "react";
+import {createItem} from "@/src/server-actions/create-item";
+import {usePathname} from "next/navigation";
+import {useActionState} from "react";
 import TextInput from "../inputs/TextInput";
 import toast from "react-hot-toast";
 import "./bottomSheet.scss";
-import { Drawer, DrawerContent, DrawerHeader, DrawerBody } from "@heroui/drawer";
-import { HeroUIProvider } from "@heroui/system";
+import {Drawer, DrawerContent, DrawerHeader, DrawerBody} from "@heroui/drawer";
+import {HeroUIProvider} from "@heroui/system";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -61,9 +61,28 @@ export default function BottomSheet(props: BottomSheetProps) {
 
   return (
     <HeroUIProvider>
-      <Drawer isOpen={props.isOpen} placement="bottom" className="bottomSheet" hideCloseButton backdrop="blur" onOpenChange={() => {
-        props.handleBottomSheet(false)
-      }}>
+      <Drawer
+        isOpen={props.isOpen}
+        placement="bottom"
+        className="bottomSheet"
+        hideCloseButton
+        backdrop="blur"
+        onOpenChange={() => {
+          props.handleBottomSheet(false);
+        }}
+        motionProps={{
+          variants: {
+            enter: {
+              opacity: 1,
+              y: 0,
+            },
+            exit: {
+              y: 100,
+              opacity: 0,
+            },
+          },
+        }}
+      >
         <DrawerContent className="bottomSheetContent">
           {(onClose) => (
             <>
@@ -71,7 +90,9 @@ export default function BottomSheet(props: BottomSheetProps) {
               <DrawerBody>
                 <form action={handleCreateFile} className="flex flex-col gap-6">
                   <div className="flex flex-col gap-5">
-                    <span className="instructions">Prefix with / to create a folder. <br /> Use .txt or .md for files.</span>
+                    <span className="instructions">
+                      Prefix with / to create a folder. <br /> Use .txt or .md for files.
+                    </span>
                     <TextInput name="newItemName" placeholder="Insert name" state={state} />
                   </div>
 
