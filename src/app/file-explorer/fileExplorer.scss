@@ -14,27 +14,3 @@
   overflow-y: scroll;
   padding-bottom: 6rem;
 }
-
-.fileExplorerSkeleton {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 1rem;
-  gap: 1rem;
-
-  .breadCrumbsSkeleton {
-    width: 100%;
-    border: solid 1px var(--grey);
-    background-color: var(--lightBlack);
-    height: 3.1rem;
-  }
-
-  .treeItemSkeleton {
-    height: 3.1rem;
-    border: solid 1px var(--grey);
-    background-color: var(--lightBlack);
-    margin-top: 0.5rem;
-  }
-}

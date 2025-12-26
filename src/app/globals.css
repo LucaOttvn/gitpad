@@ -40,7 +40,7 @@
   --green: #00a674;
   --darkGreen: #003e2c;
 
-  --red: #FD2601;
+  --red: #fd2601;
 
   --blue: #083bfe;
 }
@@ -137,4 +137,21 @@ h2 {
 .accentButton {
   background-color: var(--white);
   color: var(--black);
+}
+
+.loader {
+  width: 90px;
+  height: 14px;
+  --c: var(--white) 90deg, var(--black) 0;
+  background: conic-gradient(from 135deg at top, var(--c)) 0 0, conic-gradient(from -45deg at bottom, var(--c)) 0 100%;
+  background-size: calc(100% / 4) 50%;
+  background-repeat: repeat-x;
+  animation: l12 1s infinite;
+}
+
+@keyframes l12 {
+  80%,
+  100% {
+    background-position: calc(100% / 3) 0, calc(100% / -3) 100%;
+  }
 }
