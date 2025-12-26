@@ -11,11 +11,11 @@
 }
 
 @font-face {
-    font-family: "SpaceMono-Regular";
-    src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "SpaceMono-Regular";
+  src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -24,7 +24,7 @@
   --borderRadiusM: 0.5rem;
   --borderRadiusL: 1.5rem;
   --borderRadiusXL: 2rem;
-  
+
   --glass: hsla(0, 0%, 100%, 0.1);
 
   --white: #ffffff;
@@ -42,7 +42,7 @@
 
   --red: #d62828;
 
-  --blue: #083BFE;
+  --blue: #083bfe;
 }
 
 /* Prevent zoom on input focus (iOS Safari) */
@@ -87,7 +87,7 @@ body {
   font-family: "SpaceMono-Regular", sans-serif;
   font-size: 1.2rem;
   background-color: var(--black);
-   background-image: radial-gradient(var(--lightBlack) 1px, transparent 1px);
+  background-image: radial-gradient(var(--lightBlack) 1px, transparent 1px);
   background-size: 16px 16px;
   color: var(--white);
   width: 100%;
@@ -128,7 +128,6 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-
 
   span {
     margin: 0 1rem;
