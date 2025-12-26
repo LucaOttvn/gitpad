@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import "./bottomSheet.scss";
 import {Drawer, DrawerContent, DrawerHeader, DrawerBody} from "@heroui/drawer";
 import {HeroUIProvider} from "@heroui/system";
+import {isTextFilePath, validatePath} from "@/src/utils/methods";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -30,26 +31,28 @@ export default function BottomSheet(props: BottomSheetProps) {
 
     const trimmedName = newItemName.trim();
 
-    // Check if it's a folder (ends with /) or a file with one of the allowed extensions
-    if (trimmedName.startsWith("/") || trimmedName.endsWith(".txt") || trimmedName.endsWith(".md")) {
-      try {
-        // If filePathName is empty (then the user is creating a new item in the root folder), exclude the slash
-        const promise = createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`);
+    const validationResult = validatePath(trimmedName);
+    if (validationResult !== null) {
+      toast.error(validationResult);
+      return;
+    }
 
-        await toast.promise(promise, {
-          loading: "Creating item...",
-          success: "Item created successfully!",
-          error: "Error while creating",
-        });
-        props.handleBottomSheet(false);
-        setTimeout(() => {
-          location.reload();
-        }, 500);
-        return {success: true, message: "Item created successfully"};
-      } catch (error) {
-        console.error(error);
-        props.handleBottomSheet(false);
-      }
+    try {
+      const promise = createItem(`${filePathName ? filePathName + "/" : ""}${trimmedName}`, isTextFilePath(trimmedName));
+
+      await toast.promise(promise, {
+        loading: "Creating item...",
+        success: "Item created successfully!",
+        error: "Error while creating",
+      });
+      props.handleBottomSheet(false);
+      setTimeout(() => {
+        location.reload();
+      }, 200);
+      return {success: true, message: "Item created successfully"};
+    } catch (error) {
+      console.error(error);
+      props.handleBottomSheet(false);
     }
 
     // Block other extensions
@@ -93,7 +96,7 @@ export default function BottomSheet(props: BottomSheetProps) {
                     <span className="instructions">
                       Prefix with / to create a folder. <br /> Use .txt or .md for files.
                     </span>
-                    <TextInput name="newItemName" placeholder="Insert name" state={state} />
+                    <TextInput name="newItemName" placeholder="Insert name" state={state || null} />
                   </div>
 
                   <div className="w-full center gap-4 flex">

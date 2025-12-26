@@ -2,10 +2,10 @@ import BreadCrumbs from "@/src/components/BreadCrumbs";
 import FileComponent from "@/src/components/FileComponent";
 import FolderComponent from "@/src/components/FolderComponent";
 import getRepoContents from "@/src/server-actions/get-repo";
-import { TypesEnum } from "@/src/utils/enums";
-import { TreeItem } from "@/src/utils/models";
-import { buildTree, findByPath } from "path-mapper-json";
-import '../fileExplorer.scss';
+import {TypesEnum} from "@/src/utils/enums";
+import {TreeItem} from "@/src/utils/models";
+import {buildTree, findByPath} from "path-mapper-json";
+import "../fileExplorer.scss";
 
 interface FolderPageProps {
   params: Promise<{folderPath: string[]}>;
@@ -36,11 +36,17 @@ export default async function FolderPage(props: FolderPageProps) {
 
   if (folderPath) foundFolder = findByPath(tree, folderPath.join("/"));
 
-  if (folderPath && !foundFolder) return <span>Empty folder</span>;
+  if (folderPath && !foundFolder)
+    return (
+      <div className="w-full h-full center">
+        <span>Empty folder</span>
+      </div>
+    );
 
-  // If folderPath is undefined, cycle through the whole tree, otherwise cycle through the current folder's children
+  // If folderPath is undefined, cycle through the whole tree to get the root folders and files, otherwise cycle through the current folder's children.
   const arr = !folderPath ? tree : foundFolder!.children;
 
+  // Sort alphabetically
   arr.sort((a, b) => a.name.localeCompare(b.name));
 
   return (

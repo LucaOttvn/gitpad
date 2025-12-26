@@ -20,7 +20,7 @@
     "framer-motion": "^12.23.26",
     "next": "^16.0.10",
     "next-auth": "^4.24.13",
-    "path-mapper-json": "^1.4.0",
+    "path-mapper-json": "^1.4.1",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-hot-toast": "^2.6.0",

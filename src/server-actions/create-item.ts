@@ -1,15 +1,30 @@
-'use server';;
+'use server';
 import { APIResponse } from '../utils/models';
 import getGithubApiUrl from './get-github-api-url';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../app/api/auth/[...nextauth]/route';
 
+/**
+ * Server action to create a file or a folder.
+ */
 export async function createItem(
-    filePath: string
+    filePath: string,
+    isFile: boolean
 ): Promise<APIResponse | ErrorConstructor> {
     try {
 
         const baseUrl = await getGithubApiUrl()
+
+        let fileContent = ''
+
+        if (!isFile) {
+
+            const rawString = "Git doesn't support truly empty folders, so GitPad adds this gitkeep.txt file to ensure the folder exists in the repository. You can safely delete this file once the folder contains other files."
+            const content = Buffer.from(rawString, "utf8").toString("base64");
+
+            filePath += '/gitkeep.txt'
+            fileContent = content
+        }
         const url = `${baseUrl}/contents/${filePath}`
 
         const session = await getServerSession(authOptions) as any;
@@ -23,7 +38,7 @@ export async function createItem(
                 name: session.user.name,
                 email: session.user.email
             },
-            content: '',
+            content: fileContent,
             branch: 'main',
         }
 
