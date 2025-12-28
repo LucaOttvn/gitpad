@@ -155,3 +155,8 @@ h2 {
     background-position: calc(100% / 3) 0, calc(100% / -3) 100%;
   }
 }
+
+/* This overwrites the default Tailwind's styling that interferes with some components of the react-markdown library */
+.markdown > * {
+  all: revert;
+}

@@ -34,7 +34,7 @@ export default function FileEditor(props: FileEditorProps) {
     <AnimatedDiv className="w-full h-full">
       {props.isPreviewMode ? (
         <div
-          className="w-full h-full flex flex-col justify-start items-start overflow-auto prose dark:prose-invert"
+          className="markdown w-full h-full flex flex-col justify-start items-start overflow-auto prose dark:prose-invert"
           style={{
             padding: "1rem",
             paddingBottom: "6rem",
