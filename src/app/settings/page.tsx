@@ -9,9 +9,6 @@ export default function SettingsPage() {
     <div className="w-full h-full flex flex-col justify-start items-center p-4 gap-8 overflow-y-scroll">
       <h1
         className="w-full text-center"
-        style={{
-          fontSize: "200%",
-        }}
       >
         Settings
       </h1>
