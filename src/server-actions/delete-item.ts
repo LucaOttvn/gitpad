@@ -25,18 +25,16 @@ export async function deleteItem(
             },
         });
 
-        console.log(getResponse)
-
+        
         if (!getResponse.ok) {
             const error = await getResponse.json()
             throw new Error(`Failed to fetch file metadata: ${error.message}`)
         }
-
+        
         const fileData = await getResponse.json();
+
         const sha = fileData.sha;
 
-        console.log('/////////')
-        console.log(url)
         const body = {
             message: `Delete ${filePath}`,
             committer: {
@@ -61,9 +59,8 @@ export async function deleteItem(
             throw new Error(`GitHub API Error: ${error.message}`)
         }
 
-        const result = await response.json()
         // Revalidate cache because after the deletion of an item an automatic router.back() will happen and the previous page has to show the updated list
-        revalidatePath('/', 'layout')
+        // revalidatePath('/', 'layout')
 
         return {
             success: true,

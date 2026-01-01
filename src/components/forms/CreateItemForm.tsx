@@ -4,7 +4,8 @@ import {useActionState} from "react";
 import toast from "react-hot-toast";
 import TextInput from "../inputs/TextInput";
 import {usePathname} from "next/navigation";
-import { BottomSheetsEnum } from "@/src/utils/enums";
+import {BottomSheetsEnum} from "@/src/utils/enums";
+import { selectedFiles } from "@/src/utils/signals";
 
 interface CreateItemFormProps {
   handleBottomSheet: (value: BottomSheetsEnum | null) => void;
@@ -41,10 +42,11 @@ export default function CreateItemForm(props: CreateItemFormProps) {
         success: "Item created successfully!",
         error: "Error while creating",
       });
+
       props.handleBottomSheet(null);
-      setTimeout(() => {
-        location.reload();
-      }, 200);
+      
+      if (!selectedFiles.value) location.reload();
+      
       return {success: true, message: "Item created successfully"};
     } catch (error) {
       console.error(error);

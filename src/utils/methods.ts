@@ -18,16 +18,28 @@ export function validatePath(input: string): string | null {
     if (seg.length > 100) return "Each segment must be <= 100 characters";
   }
 
+  // Extension check: get last segment, check for .md or .txt
+  const lastSegment = segments[segments.length - 1];
+  const dotIndex = lastSegment.lastIndexOf(".");
+  const hasExtension = dotIndex > 0 && dotIndex < lastSegment.length - 1;
+  const ext = hasExtension ? lastSegment.slice(dotIndex).toLowerCase() : "";
+
+  if (hasExtension && ext !== ".md" && ext !== ".txt") {
+    return "File must be .md or .txt";
+  }
+
   return null;
 }
+
 
 export function isTextFilePath(path: string): boolean {
   const trimmed = path.trim();
   if (!trimmed) return false;
 
-  // get last segment after /
+  // Get last segment after /.
   const lastSegment = trimmed.split("/").pop()!;
 
-  // case-insensitive
+  // Check whether the lastSegment contains an extension (.md or .txt).
+  // If it does, it's a file, otherwise it's a folder.
   return /\.(md|txt)$/i.test(lastSegment);
 }

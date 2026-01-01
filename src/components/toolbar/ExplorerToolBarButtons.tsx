@@ -9,8 +9,10 @@ import AnimatedDiv from "../animated/AnimatedDiv";
 import {selectedFiles} from "@/src/utils/signals";
 import {deleteItem} from "@/src/server-actions/delete-item";
 import toast from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
 export default function ExplorerToolBarButtons() {
+  const router = useRouter();
   useSignals();
   const [currentBottomSheet, setCurrentBottomSheet] = useState<BottomSheetsEnum | null>(null);
 
@@ -28,20 +30,23 @@ export default function ExplorerToolBarButtons() {
               onClick={async () => {
                 if (!selectedFiles.value) return;
                 toast.dismiss(t.id);
-                for (const item of selectedFiles.value) {
-                  try {
-                    const promise = deleteItem(item);
-                    console.log(promise)
-                    await toast.promise(promise, {
-                      loading: `Deleting item${selectedFiles.value.length > 0 ? 's' : ''}...`,
-                      success: "Item deleted successfully!",
-                      error: "Error while deleting",
-                    });
-                    location.reload();
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }
+
+                const deletions = selectedFiles.value.map((file) => deleteItem(file));
+
+                const promises = Promise.all(deletions);
+
+                const result = await toast.promise(promises, {
+                  loading: `Deleting item${selectedFiles.value.length > 0 ? "s" : ""}...`,
+                  success: "Items deleted successfully!",
+                  error: "Error while deleting",
+                });
+
+                console.log(result)
+
+                // Refresh the client-side router cache to show the user the updated UI.
+                router.refresh();
+
+                selectedFiles.value = null;
               }}
               className="mainButton"
               style={{
