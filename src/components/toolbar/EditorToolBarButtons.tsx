@@ -97,20 +97,20 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
       {isPreviewMode ? (
         <Link href={`${editorHref}`} className="mainButton">
           <span>
-            <Image src="/icons/edit.svg" alt="edit" width={25} height={25} />
+            <Image src="/icons/edit.svg" alt="edit" width={25} height={25} loading="eager"/>
           </span>
         </Link>
       ) : (
         <Link href={`${pathName}/preview`} className="mainButton">
           <span>
-            <Image src="/icons/eye.svg" alt="visibility" width={25} height={25} />
+            <Image src="/icons/eye.svg" alt="visibility" width={25} height={25} loading="eager"/>
           </span>
         </Link>
       )}
 
       <button className="mainButton" onClick={handlePush}>
         <span>
-          <Image src="/icons/upload.svg" alt="upload" width={25} height={25} />
+          <Image src="/icons/upload.svg" alt="upload" width={25} height={25} loading="eager"/>
         </span>
       </button>
       {/* Trash button */}
@@ -121,7 +121,7 @@ export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
         className="mainButton"
       >
         <span>
-          <Image src="/icons/trash.svg" alt="trash" width={25} height={25} />
+          <Image src="/icons/trash.svg" alt="trash" width={25} height={25} loading="eager"/>
         </span>
       </button>
     </>

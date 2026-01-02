@@ -30,7 +30,7 @@ export default function ToolBar() {
       {sections[0] === PagesEnum.settings && (
         <Link href="/" className="mainButton">
           <span>
-            <Image alt="home" src='/icons/home.svg'width={25} height={25}/>
+            <Image alt="home" src='/icons/home.svg'width={25} height={25} loading="eager"/>
           </span>
         </Link>
       )}

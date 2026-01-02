@@ -77,7 +77,7 @@ export default function ExplorerToolBarButtons() {
         {/* Plus button */}
         <button onClick={() => setCurrentBottomSheet(BottomSheetsEnum.createItem)} className="mainButton">
           <span>
-            <Image src="/icons/add.svg" alt="folder" width={25} height={25} />
+            <Image src="/icons/add.svg" alt="folder" width={25} height={25} loading="eager"/>
           </span>
         </button>
         {/* Edit button */}
@@ -88,13 +88,13 @@ export default function ExplorerToolBarButtons() {
           className="mainButton"
         >
           <span>
-            <Image src="/icons/edit.svg" alt="folder" width={25} height={25} />
+            <Image src="/icons/edit.svg" alt="folder" width={25} height={25} loading="eager"/>
           </span>
         </button>
         {/* Settings button */}
         <Link className="mainButton" href={`/${PagesEnum.settings}`}>
           <span>
-            <Image src="/icons/settings.svg" alt="folder" width={25} height={25} />
+            <Image src="/icons/settings.svg" alt="folder" width={25} height={25} loading="eager"/>
           </span>
         </Link>
         <BottomSheet currentBottomSheet={currentBottomSheet} handleBottomSheet={handleBottomSheet} />
