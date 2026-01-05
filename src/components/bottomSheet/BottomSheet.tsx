@@ -9,6 +9,9 @@ interface BottomSheetProps {
   handleBottomSheet: (value: BottomSheetsEnum | null) => void;
 }
 
+/**
+ * The main bottomsheet component, it can conditionally render children based on props.currentBottomSheet.
+ */
 export default function BottomSheet(props: BottomSheetProps) {
   return (
     <HeroUIProvider>

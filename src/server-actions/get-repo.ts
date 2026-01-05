@@ -3,6 +3,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../app/api/auth/[...nextauth]/route";
 import getGithubApiUrl from "./get-github-api-url";
 
+/**
+ * Get the whole repo tree from Github apis.
+ */
 export default async function getRepoContents() {
     try {
         const session = await getServerSession(authOptions) as any

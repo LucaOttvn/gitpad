@@ -4,6 +4,10 @@ import { getServerSession } from "next-auth";
 import getGithubApiUrl from "./get-github-api-url";
 import { authOptions } from "../app/api/auth/[...nextauth]/route";
 
+/**
+ * Get the file's content.
+ * @param filePath 
+ */
 export default async function getFile(filePath: string): Promise<string | null> {
 
     try {

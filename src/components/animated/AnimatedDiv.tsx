@@ -7,6 +7,9 @@ interface AnimatedDivProps {
   onClick?: () => any;
 }
 
+/**
+ * This component animates the entrance of children with an opacity animation.
+ */
 export default function AnimatedDiv(props: AnimatedDivProps) {
   return (
     <AnimatePresence>

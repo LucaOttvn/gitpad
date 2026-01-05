@@ -11,6 +11,10 @@ interface FileEditorProps {
   isPreviewMode: boolean;
 }
 
+/**
+ * This component handles the file updates.  
+ * If props.isPreviewMode is true, it shows the formatted markdown result, otherwise it renders a plain textarea to edit the text.
+ */
 export default function FileEditor(props: FileEditorProps) {
   useSignal();
 

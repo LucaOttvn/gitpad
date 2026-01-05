@@ -2,6 +2,9 @@ import { getUserRepos } from "../../server-actions/get-user-repos";
 import "./reposList.scss";
 import Repo from "./Repo";
 
+/**
+ * This component renders the list of user's repos.
+ */
 export default async function ReposList() {
   const response = await getUserRepos();
   const reposNames: string[] = response.map((repo: {name: any}) => repo.name);

@@ -11,14 +11,20 @@ interface CreateItemFormProps {
   handleBottomSheet: (value: BottomSheetsEnum | null) => void;
 }
 
+/**
+ * The form in the bottomsheet to create a new file or folder.
+ */
 export default function CreateItemForm(props: CreateItemFormProps) {
   const router = useRouter()
   const pathName = usePathname();
 
+  // Remove "file-explorer" from the path.
   const sections = pathName
     .split("/")
     .filter((x) => x)
     .slice(1);
+
+  // This is triggered on form submission.
   const [state, handleCreateFile, isPending] = useActionState(async (prevState: any, formData: FormData) => {
     const filePathName = sections.join("/");
     const newItemName = formData.get("newItemName") as string;

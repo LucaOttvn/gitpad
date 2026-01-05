@@ -8,9 +8,9 @@ import {redirect} from "next/navigation";
 export default function LoginPage() {
   const {data: session} = useSession();
 
-  if (session) {
-    redirect(PagesEnum.fileExplorer);
-  }
+  // If the user is logged already, redirect to the main page.
+  if (session) redirect(PagesEnum.fileExplorer);
+
   return (
     <div className="w-full h-full center flex-col gap-10">
       <div className="start gap-3">
@@ -31,8 +31,8 @@ export default function LoginPage() {
         }}
         iconSrc="/icons/github.svg"
         style={{
-          width:'fit-content',
-          border: 'solid 1px var(--lightGrey)'
+          width: "fit-content",
+          border: "solid 1px var(--lightGrey)",
         }}
         label="Sign in with Github"
       />

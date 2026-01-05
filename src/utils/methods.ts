@@ -1,3 +1,7 @@
+/**
+ * Check if the input path respects all the requirements for a file/folder name
+ * @param input 
+ */
 export function validatePath(input: string): string | null {
   const path = input.trim();
 

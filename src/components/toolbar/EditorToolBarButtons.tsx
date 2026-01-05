@@ -15,7 +15,7 @@ interface EditorToolBarButtonsProps {
 }
 
 /**
- * Buttons that are visible in the ToolBar when the user is in the file editor page.
+ * Buttons that are visible in the ToolBar when the user is in the file-editor page.
  */
 export default function EditorToolBarButtons(props: EditorToolBarButtonsProps) {
   useSignal();

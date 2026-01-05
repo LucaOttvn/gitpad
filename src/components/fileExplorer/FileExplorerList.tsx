@@ -10,8 +10,8 @@ interface FileExplorerListProps {
 }
 
 /**
- * The list container for files and folders.
- * It handles the selectedFiles state.
+ * The list container for files and folders.  
+ * It renders a Folder or a File component based on the item.type.
  */
 export default function FileExplorerList(props: FileExplorerListProps) {
   useSignals();

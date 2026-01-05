@@ -12,19 +12,24 @@ interface FileComponentProps {
 }
 
 export default function FileComponent(props: FileComponentProps) {
+  
   useSignals();
+
   const [fileName, fileExtension] = props.file.name.split(".");
 
   const isExtensionValid = fileExtension === "md" || fileExtension === "txt";
 
+  // In selection mode, check if the file is selected already when clicked, if it is, remove it from the list, otherwise add it.
   const handleSelectedFiles = (selectedItem: string) => {
     if (!selectedFiles.value) return;
     const isItemIncluded = selectedFiles.value.includes(selectedItem);
+    // Remove the item from the list.
     if (isItemIncluded) {
       const filteredItems = selectedFiles.value.filter((item) => item !== selectedItem);
       selectedFiles.value = filteredItems;
       return;
     }
+    // Add the item to the list.
     selectedFiles.value = [...selectedFiles.value, selectedItem];
   };
 
