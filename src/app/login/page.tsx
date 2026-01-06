@@ -12,8 +12,8 @@ export default function LoginPage() {
   if (session) redirect(PagesEnum.fileExplorer);
 
   return (
-    <div className="w-full h-full center flex-col gap-10">
-      <div className="start gap-3">
+    <div className="w-full h-full center flex-col gap-15">
+      <div className="start gap-5">
         <Image
           src="/icons/GitPad.png"
           alt="Logo"
@@ -32,7 +32,8 @@ export default function LoginPage() {
         iconSrc="/icons/github.svg"
         style={{
           width: "fit-content",
-          border: "solid 1px var(--lightGrey)",
+          color: 'var(--black)',
+          background: 'var(--white)',
         }}
         label="Sign in with Github"
       />

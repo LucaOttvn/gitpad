@@ -136,6 +136,10 @@ h2 {
     margin: 0 1rem;
   }
 
+  &:focus {
+    outline: none
+  }
+
   &:disabled {
     opacity: 50%;
   }
