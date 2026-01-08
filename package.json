@@ -15,6 +15,7 @@
     "@heroui/system": "^2.4.25",
     "@heroui/theme": "^2.4.25",
     "@preact/signals-react": "^3.6.1",
+    "@vercel/analytics": "^1.6.1",
     "byte-base64": "^1.1.0",
     "cookies-next": "^6.1.1",
     "framer-motion": "^12.23.26",
